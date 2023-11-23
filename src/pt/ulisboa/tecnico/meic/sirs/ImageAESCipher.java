@@ -1,6 +1,7 @@
 package pt.ulisboa.tecnico.meic.sirs;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 
 /**
  * Encrypts an image with the AES algorithm in multiple modes, with a given,

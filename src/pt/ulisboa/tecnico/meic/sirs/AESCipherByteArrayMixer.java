@@ -3,6 +3,7 @@ package pt.ulisboa.tecnico.meic.sirs;
 import java.security.Key;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.crypto.spec.IvParameterSpec;
 
 /**
@@ -28,7 +29,10 @@ public class AESCipherByteArrayMixer implements ByteArrayMixer {
     @Override
     public byte[] mix(byte[] byteArray, byte[] byteArray2) throws Exception {
 
-        Key key = AESKeyGenerator.read(keyFile);
+        // Key key = AESKeyGenerator.read(keyFile);
+        KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+        keyGen.init(128);
+        Key key = keyGen.generateKey();
 
         // get a DES cipher object and print the provider
         Cipher cipher = Cipher.getInstance("AES/" + mode + "/PKCS5Padding");
