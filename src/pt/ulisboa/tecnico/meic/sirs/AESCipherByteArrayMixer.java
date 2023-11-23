@@ -14,6 +14,8 @@ public class AESCipherByteArrayMixer implements ByteArrayMixer {
     private String mode;
     private int opmode;
 
+    // TESTING
+
     public void setParameters(String keyFile, String mode) {
         this.keyFile = keyFile;
         this.mode = mode;
