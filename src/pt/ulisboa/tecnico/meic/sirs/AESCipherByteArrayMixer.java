@@ -5,6 +5,7 @@ import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Implementation of the AES cipher as a ByteArrayMixer
@@ -32,7 +33,9 @@ public class AESCipherByteArrayMixer implements ByteArrayMixer {
         // Key key = AESKeyGenerator.read(keyFile);
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(128);
-        Key key = keyGen.generateKey();
+        Key key1 = keyGen.generateKey();
+        byte[] encoded = key1.getEncoded();
+        Key key = new SecretKeySpec(encoded, 0, 16, "AES");
 
         // get a DES cipher object and print the provider
         Cipher cipher = Cipher.getInstance("AES/" + mode + "/PKCS5Padding");
